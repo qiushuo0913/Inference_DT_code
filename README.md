@@ -1,5 +1,31 @@
+# What If We Had Used a Different Algorithm? Reliable Counterfactual KPI Analysis in Wireless Systems
+This repository contains code for "[What If We Had Used a Different Algorithm? Reliable Counterfactual KPI Analysis in Wireless Systems](https://arxiv.org/pdf/2406.15819)" -- Qiushuo Hou, Sangwoo Park, Matteo Zecchin, Yunlong Cai, Guanding Yu, and Osvaldo Simeone
+
+*Figure 1: In the wireless system under study, the radio access network (RAN) is managed by a non-real-time controller. The controller collects data from the RAN about key performance indicators (KPIs) attained by AI “apps” implemented by the RAN. Accordingly, the controller logs data in the form $(x,a,y)$ as the data set, where $x$ is the context, $a$ is the app identifier, and $y$ is the KPIs. The controller implements the counterfactual analysis by answering a \emph{what-if} question: Given that app $a$ has obtained KPIs $y$ for context $x$, what would the KPIs have been for the same context $x$ had some other app $a'\neq a$ been selected by the non-real-time controller?*
+## Dependencies
+Python 3.9.18  
+Pytorch 1.12.1    
+## How to use
+### Example 1
+**transmission_mode/mimo_transmission_time.py** --- run the scenario of example1-- *python mimo_transmission_time.py*  
+**transmission_mode/ex_construct.py** --- construct the app selection probability-- *python ex_construct.py*  
+**transmission_mode/regression_model.py** --- train the quantile regressor-- *python regression_model.py*  
+**transmission_mode/weightCP_BPSK_MU.py** --- run CCKE-- *python weightCP_BPSK_MU.py*  
+
+### Example 2
+**wireless/scripts/launch_agent.py** --- run the scenario of example2-- *python launch_agent.py*  
+**wireless/envs/time_freq_resource_allocation_v112.py** --- change the setting of the scenario of example2*  
+**wireless/agent/** --- change the scheduling algorithms in example2 (now is PFCA and RR)*  
+**config/config_agent.json** --- setting of agent, i.e., the scheduling apps*  
+**config/config_environment.json** --- setting of scenario*  
+
+
+**model/ex_construct.py** --- construct the app selection probability-- *python ex_construct.py*    
+**model/regression_new.py** --- train the quantile regressor-- *python regression_new.py*   
+**model/weightCP_wo.py** --- run CCKE-- *python weightCP_wo.py*  
 
 ```
+
 Inference_DT_code
 └─ CCKE
    ├─ config - configuration of the example2
@@ -49,8 +75,6 @@ Inference_DT_code
 
       ├─ scripts - run the scenario of example2
       │  ├─ launch_agent.py
-      │  ├─ launch_agent_false.py
-      │  ├─ launch_q_learn_umts_olpc.py
 
       └─ utils
 
